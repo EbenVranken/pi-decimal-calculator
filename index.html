@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>🥧 Pi-decimal calculator</title>
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
+
+<body>
+        <h1 id="header"><img src="img/information.png" id="info" onclick="on();">
+    <div class="container">
+        <canvas id="canvas"></canvas>
+        <div class="text">
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <div id="overlay" onclick="off();">
+        <p>
+            Monte Carlo methods are a broad class of computational algorithms that rely on repeated random sampling to
+            obtain numerical results. One of the basic examples of getting started with the Monte Carlo algorithm is the
+            estimation of Pi. The idea is to simulate random (x, y) points in a 2-D plane with domain as a square of
+            side 1 unit. Imagine a circle inside the same domain with same diameter and inscribed into the square. We
+            then calculate the ratio of number points that are inside the circle and total number of generated points.
+        </p>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
