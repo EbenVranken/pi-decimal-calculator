@@ -13,7 +13,7 @@ var radius = canvas.height/2;
 
 ctx.beginPath();
 ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-ctx.lineWidth = 0.5;
+ctx.lineWidth() = 0.5;
 ctx.stroke();
             
 let rY, rX, distance, squareCount = 0; circleCount = 0, resultString = "";
