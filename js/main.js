@@ -1,3 +1,5 @@
+let play = true;
+
 var canvas = document.getElementById('canvas');
 var heightRatio = 2;
 canvas.height = canvas.width * heightRatio;
@@ -9,19 +11,20 @@ ctx.strokeStyle = "white";
 
 var centerX = canvas.width / 2;
 var centerY = canvas.height / 2;
-var radius = canvas.height/2;
+var radius = canvas.height / 2;
 
 ctx.beginPath();
 ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
 ctx.lineWidth = 0.5;
 ctx.stroke();
-            
-let rY, rX, distance, squareCount = 0; circleCount = 0, resultString = "";
 
-setInterval(Draw, 0);
+let rY, rX, distance, squareCount = 0;
+circleCount = 0, resultString = "";
 
-function Draw()
-{
+let handle = setInterval(Draw, 0);
+
+function Draw() {
+
     rY = Math.random(0) * canvas.height;
     rX = Math.random(0) * canvas.width;
 
@@ -36,7 +39,7 @@ function Draw()
     ctx.fillRect(rX, rY, 1, 1);
 
     resultString = "<p>Dot count: " + (squareCount + circleCount) + "<p>" + "<p>Circle count: " + circleCount + "<p>" +
-    "<p>Square count: " + squareCount + "<p>" + "<p>Pi calculated: " + 4 * (circleCount / (squareCount) + "</p>";
+        "<p>Square count: " + squareCount + "<p>" + "<p>Pi calculated: " + 4 * (circleCount / (circleCount + squareCount)) + "</p>";
 
     document.getElementById("result").innerHTML = resultString;
 }
@@ -47,4 +50,16 @@ function on() {
 
 function off() {
     document.getElementById("overlay").style.display = "none";
+}
+
+function resume() {
+    handle = setInterval(Draw, 0);
+    document.getElementById('Pauseknop').setAttribute('onclick', 'pause()');
+    document.getElementById('Pauseknop').innerHTML = "Pause";
+}
+
+function pause() {
+    clearInterval(handle);
+    document.getElementById('Pauseknop').setAttribute('onclick', 'resume()');
+    document.getElementById('Pauseknop').innerHTML = "Resume";
 }
