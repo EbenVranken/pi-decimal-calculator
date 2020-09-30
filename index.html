@@ -1,65 +1,36 @@
-let play = true;
+<!DOCTYPE html>
+<html lang="en">
 
-var canvas = document.getElementById('canvas');
-var heightRatio = 2;
-canvas.height = canvas.width * heightRatio;
-canvas.width *= heightRatio;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>🥧 Pi-decimal calculator</title>
 
-var ctx = canvas.getContext("2d");
-ctx.fillStyle = "white";
-ctx.strokeStyle = "white";
+    <link rel="stylesheet" href="css/main.css">
 
-var centerX = canvas.width / 2;
-var centerY = canvas.height / 2;
-var radius = canvas.height / 2;
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+</head>
 
-ctx.beginPath();
-ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-ctx.lineWidth = 0.5;
-ctx.stroke();
+<body>
+    <h1 id="header"><img src="img/information.png" id="info" onclick="on();">
+        <div class="container">
+            <canvas id="canvas"></canvas>
+            <div class="text">
+                <button onclick="pause();" id="Pauseknop">Pause</button>
+                <p id="result"></p>
+            </div>
+        </div>
 
-let rY, rX, distance, squareCount = 0;
-circleCount = 0, resultString = "";
+        <div id="overlay" onclick="off();">
+            <p>
+                Monte Carlo methods are a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. One of the basic examples of getting started with the Monte Carlo algorithm is the estimation of Pi. The idea is to simulate
+                random (x, y) points in a 2-D plane with domain as a square of side 1 unit. Imagine a circle inside the same domain with same diameter and inscribed into the square. We then calculate the ratio of number points that are inside the circle
+                and total number of generated points.
+            </p>
+        </div>
 
-let handle = setInterval(Draw, 0);
+        <script src="js/main.js"></script>
+</body>
 
-function Draw() {
-
-    rY = Math.random(0) * canvas.height;
-    rX = Math.random(0) * canvas.width;
-
-    distance = Math.sqrt((rX - centerX) ** 2 + (rY - centerY) ** 2);
-    if (distance < radius) {
-        circleCount++;
-        ctx.fillStyle = "hsl(" + rX + ", 100%, 50%)";
-    } else {
-        squareCount++;
-        ctx.fillStyle = "white";
-    }
-    ctx.fillRect(rX, rY, 1, 1);
-
-    resultString = "<p>Dot count: " + (squareCount + circleCount) + "<p>" + "<p>Circle count: " + circleCount + "<p>" +
-        "<p>Square count: " + squareCount + "<p>" + "<p>Pi calculated: " + 4 * (circleCount / (circleCount + squareCount)) + "</p>";
-
-    document.getElementById("result").innerHTML = resultString;
-}
-
-function on() {
-    document.getElementById("overlay").style.display = "flex";
-}
-
-function off() {
-    document.getElementById("overlay").style.display = "none";
-}
-
-function resume() {
-    handle = setInterval(Draw, 0);
-    document.getElementById('Pauseknop').setAttribute('onclick', 'pause()');
-    document.getElementById('Pauseknop').innerHTML = "Pause";
-}
-
-function pause() {
-    clearInterval(handle);
-    document.getElementById('Pauseknop').setAttribute('onclick', 'resume()');
-    document.getElementById('Pauseknop').innerHTML = "Resume";
-}
+</html>
