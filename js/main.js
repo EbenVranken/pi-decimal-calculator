@@ -36,7 +36,7 @@ function Draw()
     ctx.fillRect(rX, rY, 1, 1);
 
     resultString = "<p>Dot count: " + (squareCount + circleCount) + "<p>" + "<p>Circle count: " + circleCount + "<p>" +
-    "<p>Square count: " + squareCount + "<p>" + "<p>Pi calculated: " + 4 * (circleCount / (squareCount + circleCount)) + "</p>";
+    "<p>Square count: " + squareCount + "<p>" + "<p>Pi calculated: " + 4 * (circleCount / (squareCount) + "</p>";
 
     document.getElementById("result").innerHTML = resultString;
 }
